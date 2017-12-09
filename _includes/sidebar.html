@@ -1,0 +1,110 @@
+<div class="page-header">
+  <h3>
+    {{ site.title }}
+    {% if site.subtitle %}<br/><small>{{ site.subtitle }}</small>{% endif %}
+  </h3>
+</div>
+
+<p class="text-center">
+  <img width="330px" src="{{ site.url }}/img/lieblings-plaetzchen-cover360.jpg" alt="{{ site.title }} logo">
+</p>
+
+<!-- {% if site.description %}<p>{{ site.description }}</p>{% endif %} 17.08.2016 -->
+
+<p>Jana begleitet pro Episode ein_e Gäst_in zu deren Lieblings-Plätzchen (meistens in Wien), um mehr über Person und Plätzchen zu erfahren und am Ende Lieblings-Plätzchen zu essen. Letzteres nicht nur wegen des Wortspiels, sondern wegen der Internetheimat der Gastgeberin, dem Foodblog <a href="http://www.zuckerbaeckerei.com" target="_blank">Zuckerbäckerei</a>. </p>
+
+
+<p class="text-center">
+  <script class="podlove-subscribe-button"
+          src="https://cdn.podlove.org/subscribe-button/javascripts/app.js"
+          data-language="de"
+          data-size="medium"
+          data-json-data="podcastData"
+          data-colors="#0787b1;blue"
+          data-buttonid="123abc"
+          data-hide="false">
+  </script>
+  <script>
+    window.podcastData = {
+      "title": "{{ site['title']}}",
+      "subtitle": "{{ site['subtitle']}}",
+      "description": "{{ site['description']}}",
+      "cover": "{{ site.url }}/img/logo-360x360.png",
+      "feeds": [
+      {% for feed in site['episode_feed_formats'] %}
+        {
+          "type": "audio",
+          "format": "{{ feed }}",
+          "url": "{{ site['url']}}/episodes.{{ feed }}.rss",
+          "directory-url-itunes": "{{ site['itunes_url']}}",
+          "variant": "high"
+        },
+      {% endfor %}
+      ]
+    }
+  </script>
+</p>
+
+<hr/>
+
+<h4>RSS-Feeds</h4>
+
+<ul >
+  {% for feed in site['episode_feed_formats'] %}
+    <li><a href="{{ site['url']}}/episodes.{{ feed }}.rss"><i class="fa fa-rss"></i> {{ feed }}-Feed ( Audio )</a></li>
+  {% endfor %}
+    <li><a href="{{ site['url']}}/feed.xml"><i class="fa fa-rss"></i> Lieblings-Podcasts-Feed ( Blog )</a></li>
+</ul>
+
+
+<!-- <h4>Verzeichnisse</h4>
+
+<ol type="i">
+  {% if site.itunes_url %}
+    <li>in Apple-<a href="{{ site.itunes_url }}"><i class="fa fa-apple"></i> Itunes</a></li>
+  {% endif %}
+  {% if site.bitlove_url %}
+    <li>as Torrents at <a href="{{ site.bitlove_url }}"><img src="https://bitlove.org/static/favicon.png"/> Bitlove</a></li>
+  {% endif %}
+  {% if site.fyyd_url %}
+    <li>at the podcast search engine <a href="{{ site.fyyd_url }}">Fyyd</a></li>
+  {% endif %}
+  {% if site.gpodder_url %}
+    <li>at <a href="{{ site.gpodder_url }}"><img src="https://gpodder.net/media/gpoddernet_64.png" height="16" /> Gpodder.net</a></li>
+  {% endif %}
+</ol>
+-->
+
+<h4>Credits</h4>
+
+
+Titelsong:  <a href="http://freemusicarchive.org/music/Ergo_Phizmiz/Music_from_The_House_of_Dr_Faustus/Gretchens_Waltz">Gretchen's Waltz - Ergo Phizmiz</a> unter einer <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/" ><!--<img src="https://i.creativecommons.org/l/by-nc-sa/2.0/88x31.png" /> --> CC-BY-NC-SA-Lizenz. </a>
+
+<h4>Lizenz</h4>
+
+<!-- {% if site.license_url %}
+  <a rel="license" href="{{ site.license_url }}">
+    {% if site.license_image_url %}
+      <img alt="Creative Commons License" style="border-width:0" src="{{ site.license_image_url }}" />
+    {% else %}
+      {{ site.license }}
+    {% endif %}
+  </a>
+{% endif %}
+-->
+
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="CC-BY-NC-SA 4.0"> </a>
+
+<hr/>
+
+<h4>Lieblings-Plätzchen woanders</h4>
+
+{% if site.flattr_uid %}
+  <span class="pull-left">{{ site | flattr_button }}</span>
+{% endif %}
+
+{% if site.twitter_nick %}
+  <a href="https://twitter.com/{{ site.twitter_nick }}" class="twitter-follow-button" data-show-count="false">Follow @{{ site.twitter_nick }}</a>
+{% endif %}
+
+</br><a href="http://www.facebook.com/liebplaetzchen">Facebook</a> - <a href="http://www.instagram.com/liebplaetzchen">Instagram</a>
